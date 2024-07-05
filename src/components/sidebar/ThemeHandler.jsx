@@ -23,7 +23,6 @@ const ThemeHandler = () => {
   const [mode, setMode] = useState(
     localStorage.getItem("mode") ? localStorage.getItem("mode") : 2
   );
-  console.log(mode);
 
   const [selected, setSelected] = useState(theme[mode]);
   const element = document.documentElement;

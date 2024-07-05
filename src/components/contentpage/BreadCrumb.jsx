@@ -11,7 +11,7 @@ const BreadCrumb = () => {
 
   return (
     <div>
-      <div className="w-fit flex items-center gap-2 rounded px-5 py-1 border-[1px] border-black/20 dark:border-white/20 dark:text-light text-dark">
+      <div className="font-cursive w-fit flex items-center gap-2 rounded px-5 py-1 border-[1px] border-black/20 dark:border-white/20 dark:text-light text-dark">
         <button
           onClick={() => {
             homeHandler();

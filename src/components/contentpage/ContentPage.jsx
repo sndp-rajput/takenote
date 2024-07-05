@@ -3,9 +3,10 @@ import Header from "./Header";
 import BreadCrumb from "./BreadCrumb";
 import { IoIosSearch } from "react-icons/io";
 import { HiOutlineDotsVertical } from "react-icons/hi";
+import Folder from "./Folder";
 
 const ContentPage = () => {
-  const [file, setFile] = useState(true);
+  const [file] = useState(false);
 
   return (
     <div
@@ -31,6 +32,7 @@ const ContentPage = () => {
         </div>
         <div className="text-container">
           {/* {file ? <TextEditor /> : <Folder />} */}
+          <Folder />
         </div>
       </div>
     </div>
