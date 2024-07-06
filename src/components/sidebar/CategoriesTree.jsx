@@ -12,6 +12,7 @@ const CategoriesTree = () => {
         {folders.map((item) => {
           return <TreeButton id={item.id} name={item.name} key={item.id} />;
         })}
+        <br />
       </ul>
     </div>
   );
