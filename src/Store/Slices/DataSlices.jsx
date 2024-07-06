@@ -24,6 +24,14 @@ const dataSlice = createSlice({
       state.folPending = !state.folPending;
       console.log("run");
     },
+    folderRename(state, action) {
+      const newFolders = state.folders.map((folder) =>
+        folder.id === action.payload[0]
+          ? { ...folder, name: action.payload[1] }
+          : folder
+      );
+      state.folders = newFolders;
+    },
   },
 });
 
@@ -33,6 +41,7 @@ export const {
   folPending,
   handleFolPending,
   folders,
+  folderRename,
 } = dataSlice.actions;
 
 export default dataSlice.reducer;

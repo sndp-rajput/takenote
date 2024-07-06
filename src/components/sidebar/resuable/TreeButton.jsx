@@ -1,9 +1,9 @@
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 import Textellipsis from "./Textellipsis";
 import { FaRegFolder } from "react-icons/fa";
 import { FaRegFolderOpen } from "react-icons/fa";
 import { useDispatch, useSelector } from "react-redux";
-import { setSelectedTab } from "../../../Store/Slices/DataSlices";
+import { setSelectedTab, folderRename } from "../../../Store/Slices/DataSlices";
 
 const TreeButton = ({ id, name }) => {
   const [rename, setRename] = useState(false);
@@ -20,24 +20,31 @@ const TreeButton = ({ id, name }) => {
       setRename(false);
     }
   }
+  if (!rename) {
+    document.documentElement.removeEventListener("click", documentClick);
+  } else {
+    document.documentElement.addEventListener("click", documentClick);
+  }
 
   function documentClick(e) {
     if (elem.current !== e.target) {
-      console.log("click");
       if (rename) {
         if (folderName === "") {
-          console.log("done");
           setFolderName(name);
-          setRename(false); // this not working
+          setRename(false);
+        } else {
+          dispatch(folderRename([id, folderName]));
         }
         setRename(false);
       }
     }
   }
 
-  if (rename) {
-    document.documentElement.addEventListener("click", documentClick);
-  }
+  useEffect(() => {
+    if (elem.current) {
+      elem.current.select();
+    }
+  }, [rename]);
 
   return (
     <li className="w-full">
